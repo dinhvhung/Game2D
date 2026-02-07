@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoretext;
     [SerializeField] private GameObject gameOverUi;
     [SerializeField] private GameObject gameWinUi;
+    [SerializeField] private GameObject menuGameUi;
     private bool isGameOver = false;
     private bool isGameWin = false;
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
         UpdateScore();
         gameOverUi.SetActive(false);
         gameWinUi.SetActive(false);
+        menuGameUi.SetActive(false);
     }
 
     public void AddScore (int points) {
@@ -63,5 +65,15 @@ public class GameManager : MonoBehaviour
 
     public bool IsGameWin() {
         return isGameWin;
+    }
+
+    public void LoadMenu() {
+        Time.timeScale = 0;
+        menuGameUi.SetActive(true);
+    }
+
+    public void ResumeGame() {
+        Time.timeScale = 1;
+        menuGameUi.SetActive(false);
     }
 }
